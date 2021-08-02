@@ -13,9 +13,11 @@ While not in Nixpkgs, Mycorrhiza package is installed by adding it in
 like this:
 
 ```nix
-nixpkgs.config.packageOverrides = super: let self = super.pkgs; in {
-  mycorrhiza = import '<PATH-TO-REPO>' { pkgs = self; };
-};
+{
+  nixpkgs.config.packageOverrides = super: let self = super.pkgs; in {
+    mycorrhiza = import "<PATH-TO-REPO>" { pkgs = self; };
+  };
+}
 ```
 
 After that, install `mycorrhiza` package by method of your choice,
@@ -28,15 +30,17 @@ installed in Home Manager by importing the module and activating it with
 options at `~/.config/nixpkgs/home.nix`:
 
 ```nix
-imports = [
-  <PATH-TO-REPO>/mycorrhiza-home.nix
-];
+{
+  imports = [
+    <PATH-TO-REPO>/mycorrhiza-home.nix
+  ];
 
-services.mycorrhiza = {
-  enable = true;
-  wikiPath = "${config.home.homeDirectory}/wiki";
-  # default path is ~/.mycorrhiza
-};
+  services.mycorrhiza = {
+    enable = true;
+    wikiPath = "${config.home.homeDirectory}/wiki";
+    # default path is ~/.mycorrhiza
+  };
+}
 ```
 
 ## Roadmap
