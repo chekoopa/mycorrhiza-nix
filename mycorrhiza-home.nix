@@ -60,8 +60,6 @@ in
             ExecStart =
               "${cfg.package}/bin/mycorrhiza ${cfg.wikiPath}";
             Restart = "on-failure";
-            Environment = "PATH=${cfg.gitPackage}/bin:/usr/bin:/bin";
-            # system variant is: path = [ cfg.gitPackage ];
           };
 
           Install = { WantedBy = [ "default.target" ]; };
