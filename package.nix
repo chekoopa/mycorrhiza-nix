@@ -13,7 +13,7 @@ buildGoModule rec {
     owner = "bouncepaw";
     repo = "mycorrhiza";
     rev = "v${version}";
-    sha256 = "1rlqcvc0jnx8nf6iwh67nnwl61nfk6cb2lhyvjy1fsa87lc0ql62";
+    sha256 = "0manay7gfybzk28dp9a8xdfpbhxm1dbnvcyp4mjhh449n8jlp4bq";
     fetchSubmodules = true;
   };
 
