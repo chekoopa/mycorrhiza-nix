@@ -2,11 +2,14 @@
 , makeWrapper, git
 }:
 
+let
+  devBuild = false;
+in
 buildGoModule rec {
   pname = "mycorrhiza";
-  version = "1.3.0";
+  version = if devBuild then "1.5.1a" else "1.5.0";
 
-  src = fetchFromGitHub {
+  src = if devBuild then ../mycorrhiza else fetchFromGitHub {
     owner = "bouncepaw";
     repo = "mycorrhiza";
     rev = "v${version}";
@@ -14,7 +17,9 @@ buildGoModule rec {
     fetchSubmodules = true;
   };
 
-  vendorSha256 = "1gqr1nwakjfkq3fkvxm21j85k4nf8329kba9chn8xmzm35yhrdfm"; 
+  vendorSha256 = if devBuild 
+    then "1br1p8cnyv2xpwnld3ydd87zxbdwl962f6yww8i8xbsm7881bl0d"
+    else "1gqr1nwakjfkq3fkvxm21j85k4nf8329kba9chn8xmzm35yhrdfm";
   
   subPackages = [ "." ]; 
 
